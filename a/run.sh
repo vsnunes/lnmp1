@@ -15,5 +15,5 @@ compile testeJAN
 #fstrmepsilon testeJAN.fst | fsttopsort | fstprint --isymbols=$SYMBOL_FILE
 fstcompose testeJAN.fst mmm2mm.fst  | fstarcsort > composeJAN.fst
 echo -n "O formato decimal de JAN é: "
-fstproject --project_output composeJAN.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=$SYMBOL_FILE | awk 'BEGIN { ORS="" }; {print $3}'
+show composeJAN
 echo " "

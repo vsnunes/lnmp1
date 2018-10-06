@@ -17,3 +17,8 @@ function draw {
         fstdraw    --isymbols=$SYMBOL_FILE --osymbols=$SYMBOL_FILE --portrait $1.fst | dot -Tpdf  > $1.pdf
 }
 
+#Show to stdout the result of a FST
+# Arg1: the name of the file without extension
+function show {
+    fstproject --project_output $1.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=$SYMBOL_FILE | awk 'BEGIN { ORS="" }; {print $3}'
+}
