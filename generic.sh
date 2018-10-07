@@ -23,3 +23,9 @@ function draw {
 function show {
     fstproject --project_output $1.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=$SYMBOL_FILE_OUT | awk 'BEGIN { ORS="" }; {print $3}'
 }
+
+#Securely remove the .fst e .pdf files
+# No arguments needed
+function clean {
+        rm -r *.fst *.pdf
+}
