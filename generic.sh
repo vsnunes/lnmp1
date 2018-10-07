@@ -4,6 +4,7 @@
 
 #Symbol table location
 SYMBOL_FILE=../syms.txt
+SYMBOL_FILE_OUT=../syms-out.txt
 
 #Compile a FST
 # Arg1: the name of the file without extension
@@ -20,5 +21,5 @@ function draw {
 #Show to stdout the result of a FST
 # Arg1: the name of the file without extension
 function show {
-    fstproject --project_output $1.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=$SYMBOL_FILE | awk 'BEGIN { ORS="" }; {print $3}'
+    fstproject --project_output $1.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=$SYMBOL_FILE_OUT | awk 'BEGIN { ORS="" }; {print $3}'
 }
