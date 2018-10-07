@@ -6,7 +6,10 @@ source ../generic.sh
 # Compila e gera a versão gráfica do transdutor en2pt e pt2en exercicio 1.b)
 compile dd
 compile en2pt_m
-compile pt2en_m
+
+# We already create the english 2 portuguese then we invert it to do pt2en
+fstinvert en2pt_m.fst > pt2en_m.fst
+
 compile aaaa
 fstconcat dd.fst en2pt_m.fst > dden2pt_m.fst
 fstconcat dden2pt_m.fst aaaa.fst > en2pt.fst
