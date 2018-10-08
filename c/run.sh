@@ -6,12 +6,17 @@ source ../generic.sh
 # Compila e gera a versão gráfica do transdutor en2pt e pt2en exercicio 1.b)
 compile dia
 compile mes
-#compile ano
 
 # Compila o trasdutor que converte numeros para extenso entre 1 e 99 (para posteriormente criar o ano)
 compile nn
 # O FST dia já contem o extenso de números entre 1 e 31, assim reaproveita-se isso e junta-se o restante
 fstunion dia.fst nn.fst > 1_99nn.fst
+
+# Seculo FST contem o necessário para traduzir os primeiros dois digitos do ano: 20xx -> dois mil e ...
+compile seculo
+
+# O FST ano é então uma concatenção do século com o FST 1_99nn (que traduz números entre 1 e 99)
+fstconcat seculo.fst 1_99nn.fst > ano.fst
 
 # Testes
 echo "** Testes:"
@@ -80,4 +85,16 @@ echo -n "NN: O numero 70 por extenso é:"
 compile testeNN70
 fstcompose testeNN70.fst nn.fst > NN70.fst
 show NN70
+echo ""
+
+echo -n "ANO: O ano 2018 por extenso é:"
+compile testeANO2018
+fstcompose testeANO2018.fst ano.fst > ANO2018.fst
+show ANO2018
+echo ""
+
+echo -n "ANO: O ano 2007 por extenso é:"
+compile testeANO2007
+fstcompose testeANO2007.fst ano.fst > ANO2007.fst
+show ANO2007
 echo ""
