@@ -4,13 +4,23 @@ source ../generic.sh
 ################### simbolos ################
 #
 # Compila e gera a versão gráfica do transdutor en2pt e pt2en exercicio 1.b)
-compile dia
+
+#FST com extenso de 1 a 29.
+compile 1_29nn
+
+#FST com extenso de 30 e 31.
+#Porquê separar? Porque queremos aproveitar o anterior [1; 29] para o ano (linha 23 deste script)
+compile 30_31nn
+
+# O FST dia é uma união dos números [1; 29] com [30; 31]
+fstunion 1_29nn.fst 30_31nn.fst > dia.fst
+
 compile mes
 
 # Compila o trasdutor que converte numeros para extenso entre 1 e 99 (para posteriormente criar o ano)
 compile nn
-# O FST dia já contem o extenso de números entre 1 e 31, assim reaproveita-se isso e junta-se o restante
-fstunion dia.fst nn.fst > 1_99nn.fst
+# O FST dia já contem o extenso de números entre 1 e 29, assim reaproveita-se isso e junta-se o restante
+fstunion 1_29nn.fst nn.fst > 1_99nn.fst
 
 # Seculo FST contem o necessário para traduzir os primeiros dois digitos do ano: 20xx -> dois mil e ...
 compile seculo
