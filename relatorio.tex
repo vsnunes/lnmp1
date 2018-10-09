@@ -1,0 +1,51 @@
+%***************************************************
+%* Língua Natural
+%* Mini-Projeto 1
+%***************************************************
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[letterpaper, portrait, margin=3cm]{geometry}
+
+\begin{document}
+\title{\vspace{-3cm}Língua Natural}
+\author{Grupo 25 - Relatório do Mini-Projeto 1}
+\date{}
+
+\maketitle
+83567 - Tiago Gonçalves
+
+83576 - Vítor Nunes
+
+\section*{Abordagem}
+A Data foi vista como uma concatenação de três módulos. Conforme o exercício pedido escolhemos os módulos necessários reaproveitando os módulos já existentes.
+\newline
+
+A criação do FST \textsc{dia} consiste na união entre dois FST:
+\begin{itemize}
+	\item \textsc{1{\_}29nn} que contém a tradução de número para extenso de números entre 1 e 29 inclusive;
+	\item \textsc{30{\_}31nn} que contém a tradução de número para extenso dos números 30 e 31;
+\end{itemize}
+
+O FST \textsc{pt2en} foi obitdo à custa da inversão, ou seja troca de \textit{input} por \textit{output}.
+
+Assim é possível reaproveitar o \textsc{1{\_}29nn}, para os últimos dois dígitos do ano.
+
+Assim a estrutura do \textsc{Dia} é:
+$$ \textsc{Dia} = \textsc{1{\_}29nn} \cup \textsc{30{\_}31nn}  $$
+
+Para o \textsc{Ano} a estrutura é:
+$$ \textsc{Ano} = \textsc{Seculo} ^\frown \textsc{1{\_}99nn}  $$
+
+O FST \textsc{seculo} contém o extenso dos primeiros dois digitos do ano: \textit{Dois mil e ...}
+
+Na criação de \textsc{misto2texto} para o módulo mês fez-se uma composição entre \textsc{mmm2mm} (conversão de condensado para númerico) e \textsc{mes} (conversão de númerico para extenso) o que resultou numa conversão direta do formato condensado para extenso.
+
+
+
+
+\end{document}
+
