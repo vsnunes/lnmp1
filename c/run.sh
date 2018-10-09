@@ -116,3 +116,15 @@ compile testeANO2007
 fstcompose testeANO2007.fst ano.fst > ANO2007.fst
 show ANO2007
 echo ""
+
+echo -n "numerico2texto: A data por extenso é:"
+compile mistoTiago
+fstcompose mistoTiago.fst numerico2texto.fst > 18Tiago.fst
+show 18Tiago
+echo ""
+
+echo -n "numerico2texto: A data por extenso é:"
+compile mistoVitor
+fstcompose mistoVitor.fst numerico2texto.fst > 18Vitor.fst
+show 18Vitor
+echo ""
