@@ -25,8 +25,16 @@ fstunion 1_29nn.fst nn.fst > 1_99nn.fst
 # Seculo FST contem o necessário para traduzir os primeiros dois digitos do ano: 20xx -> dois mil e ...
 compile seculo
 
-# O FST ano é então uma concatenção do século com o FST 1_99nn (que traduz números entre 1 e 99)
+# O FST ano e' então uma concatenção do século com o FST 1_99nn (que traduz números entre 1 e 99)
 fstconcat seculo.fst 1_99nn.fst > ano.fst
+
+#Criacao de numerico2texto.fst
+compile barra
+fstconcat dia.fst barra.fst > diabarra.fst
+fstconcat diabarra.fst mes.fst > diames.fst
+fstconcat diames.fst barra.fst > diamesbarra.fst
+fstconcat diamesbarra.fst ano.fst > numerico2texto.fst 
+draw numerico2texto
 
 # Testes
 echo "** Testes:"
