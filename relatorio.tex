@@ -1,6 +1,6 @@
 %***************************************************
 %* Língua Natural
-%* Mini-Projeto 1
+%* Mini-Projeto 1 - Grupo 25
 %***************************************************
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
@@ -44,6 +44,7 @@ O FST \textsc{seculo} contém o extenso dos primeiros dois digitos do ano: \text
 
 Na criação de \textsc{misto2texto} para o módulo mês fez-se uma composição entre \textsc{mmm2mm} (conversão de condensado para númerico) e \textsc{mes} (conversão de númerico para extenso) o que resultou numa conversão direta do formato condensado para extenso (\textsc{mistomm}).
 De seguida concatena-se o módulo dia com a barra e com o mês, novamente a barra e o módulo ano. \newline
+Assim: $\textsc{misto2texto} = \textsc{DiaBarra} ^\frown \textsc{mistomm} ^\frown \textsc{Barra} ^\frown \textsc{ano} \newline$
 
 No caso do \textsc{Data2texto} o processo é identico exceto que o módulo mês resulta: $\textsc{mistomm} \cup \textsc{mes}$ ou seja, o módulo permite converter um mês quer em formato númerico quer em formato condensado para o formato extenso.
 
